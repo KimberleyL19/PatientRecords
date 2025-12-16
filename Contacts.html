@@ -8,14 +8,18 @@
 <body>
 <script src="Contacts.js" defer></script>
 <h1 id="heading">Contact Details</h1>
+<div id="search-bar">
+    <input type="text" id="searchInput" placeholder="Enter patient name" aria-label="Search patients">
+    <button id="searchBtn" class="search-btn">Search</button>
+</div>
 <ul>
     <li>
-        <label>Firstname:<input type="text" id="fname"></label>
+        <label>First Name:<input type="text" id="fname"></label>
     </li>
     <br>
     <br>
     <li>
-        <label>Lastname: <input type="text" id="lname"></label>
+        <label>Last Name: <input type="text" id="lname"></label>
     </li>
     <br>
     <br>
@@ -78,5 +82,14 @@
     </li>
     <button id="submit">Submit Details</button>
 </ul>
+<div class="displayPatients">
+    <div id="patient-records">
+    <button id="showPatientsBtn">Display All Patients</button>
+</div>
+</div>
 </body>
+<footer id="footer">
+    <p>© 2025 Patient Management System — Kimberley Liddle</p>
+</footer>
+
 </html>

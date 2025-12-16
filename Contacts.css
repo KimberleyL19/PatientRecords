@@ -1,29 +1,171 @@
-/* Styles for Contacts page - moved from inline <style> */
+/* Styles for Contacts page - soft dark-green theme */
+:root {
+    --bg: #0b2b20; /* very dark green */
+    --surface: #153f2e; /* card / panel */
+    --muted: #1f5b43; /* subtle surfaces */
+    --text: #e9f7ef; /* main text */
+    --muted-text: #cfead9;
+    --label-color: #8fcf9a; /* labels */
+    --button-color: #2aa876; /* primary buttons */
+    --button-contrast: #031a10; /* button text */
+    --input-bg: #0f3426; /* inputs */
+    --border: rgba(255,255,255,0.08);
+    --accent-2: #5aa36f; /* secondary accent */
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    line-height: 1.45;
+    padding: 18px;
+    padding-bottom: 80px; /* space for fixed footer if needed */
+}
+
+/* Lists and layout */
 ul { list-style: none; padding: 0; margin: 0; }
 li { margin: 0 0 1em 0; }
-label { display: block; font-weight: 600; }
+
+/* Labels use a soft green to distinguish from buttons */
+label { display: block; font-weight: 600; color: var(--label-color); margin-bottom: 0.35em; }
+
+/* Form controls */
 input[type="text"], input[type="email"], input[type="date"], textarea {
     display: block;
     margin-top: 0.25em;
-    padding: 0.35em 0.5em;
+    padding: 0.45em 0.6em;
     width: 320px;
     max-width: 100%;
     box-sizing: border-box;
+    background: var(--input-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
 }
-button { padding: 0.45em 0.75em; }
-/* BMI display styling */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(42,168,118,0.12);
+    border-color: var(--accent-2);
+}
+
+/* Buttons: distinct colour from labels */
+button {
+    padding: 0.5em 0.85em;
+    background: var(--button-color);
+    color: var(--button-contrast);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+button:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+button.secondary {
+    background: linear-gradient(180deg, var(--muted), var(--surface));
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Compact info displays (BMI, categories) */
 #bmi-display {
     width: 120px;
     text-align: center;
-    background: #fafafa;
-    border: 1px solid #ccc;
-    padding: 0.35em 0.5em;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.5em 0.6em;
+    border-radius: 6px;
+    color: var(--muted-text);
 }
-/* BMI category display */
+
 #bmi-category {
     width: 220px;
-    padding: 0.35em 0.5em;
-    border: 1px solid #ccc;
-    background: #fff;
+    padding: 0.5em 0.6em;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    color: var(--muted-text);
+    border-radius: 6px;
 }
+
+/* Small utilities */
+.muted { color: var(--muted-text); }
+.card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 10px;
+}
+
+/* Ensure inputs on mobile remain usable */
+@media (max-width: 420px) {
+    input[type="text"], input[type="email"], input[type="date"], textarea { width: 100%; }
+}
+
+/* Search bar positioned at top-right */
+#search-bar {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+#search-bar #searchInput {
+    width: 220px;
+    padding: 0.4em 0.55em;
+    border-radius: 6px;
+}
+#search-bar .search-btn {
+    padding: 0.45em 0.7em;
+    border-radius: 8px;
+}
+
+@media (max-width: 560px) {
+    #search-bar { position: static; margin: 12px 0 18px; }
+    #search-bar #searchInput { width: 100%; }
+}
+#patient-records {
+    position: absolute;
+    top: 70px; /* pushes it below the search bar */
+    right: 18px;
+}
+
+#showPatientsBtn {
+    background: var(--button-color);
+    color: var(--button-contrast);
+    padding: 0.5em 0.85em;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#showPatientsBtn:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+    #patient-controls {
+        position: static;
+        margin: 12px 0 18px;
+        text-align: right;
+    }
+}
+#footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--muted-text);
+    text-align: center;
+    padding: 16px 0;
+    margin-top: 40px;
+    border-radius: 10px 10px 0 0;
+}
+
+
+
 
