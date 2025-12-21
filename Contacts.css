@@ -175,13 +175,12 @@ button.secondary {
   border: 1px solid #8ac9a3;
   color: #0f2f1f;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 20px;
   max-width: 400px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   font-family: "Segoe UI", Arial, sans-serif;
   text-align: left;
-  margin-top: 20px; 
 }
 
 #result h3 {
@@ -195,9 +194,9 @@ button.secondary {
 .center-wrapper {
   display: flex;
   justify-content: center;     /* centre horizontally */
-  align-items: center;     /* start near the top */
-  min-height: 10vh;            /* take up most of the screen */
-  padding-top: 60px;           /* push the box higher */
+  align-items: flex-start;     /* align to top */
+  min-height: 10vh;            /* take up some of the screen */
+  padding-top: 20px;           /* minimal push down */
 }
 
 /* Gender container */
@@ -280,5 +279,216 @@ button.secondary {
     }
 }
 
+/* Statistics page styles */
+#stats {
+    max-width: 600px;
+    margin: 30px auto 0;
+    padding: 20px;
+}
 
+#stats h2 {
+    color: var(--label-color);
+    font-size: 1.4em;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--accent-2);
+    padding-bottom: 8px;
+}
 
+#stats h2:first-child {
+    margin-top: 0;
+}
+
+#stats p {
+    font-size: 1.1em;
+    color: var(--text);
+    font-weight: 500;
+    padding: 12px;
+    background: var(--surface);
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-2);
+    display: inline-block;
+}
+
+/* Statistics table styling */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stats-table thead {
+    background: linear-gradient(135deg, var(--muted), var(--accent-2));
+    color: var(--button-contrast);
+}
+
+.stats-table thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95em;
+    letter-spacing: 0.3px;
+}
+
+.stats-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s ease;
+}
+
+.stats-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.stats-table tbody tr:hover {
+    background: rgba(42, 168, 118, 0.08);
+}
+
+.stats-table tbody td {
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 0.95em;
+}
+
+.stats-table tbody td:first-child {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--label-color);
+}
+
+/* Statistics list styling */
+.stats-list {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+}
+
+.stats-list li {
+    margin: 10px 0;
+    padding: 12px 16px;
+    background: var(--surface);
+    border-left: 4px solid var(--accent-2);
+    border-radius: 4px;
+    color: var(--text);
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stats-list li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Back button styling on statistics page */
+#backBtn {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 0.6em 1.1em;
+    background: linear-gradient(135deg, var(--button-color), var(--accent-2));
+    color: var(--button-contrast);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95em;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#backBtn:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+#backBtn:active {
+    transform: translateY(0);
+}
+
+/* Filter and sort controls for patient display */
+.filter-controls {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
+    padding: 16px;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-group label {
+    font-size: 0.9em;
+    color: var(--label-color);
+    margin: 0;
+}
+
+.filter-group select {
+    padding: 0.5em 0.6em;
+    background: var(--input-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    min-width: 140px;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--accent-2);
+    box-shadow: 0 0 0 3px rgba(42,168,118,0.12);
+}
+
+/* Patient list styling */
+.patient-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: grid;
+    gap: 12px;
+}
+
+.patient-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-2);
+    padding: 14px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.patient-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.patient-card p {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.patient-card strong {
+    color: var(--label-color);
+}
+
+/* No results message */
+.no-results {
+    text-align: center;
+    color: var(--muted-text);
+    padding: 30px;
+    font-size: 1em;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Statistics</title>
+  <link rel="stylesheet" href="Contacts.css">
+</head>
+<body>
+
+<h1>Patient Statistics</h1>
+
+<p><button id="backBtn" onclick="location.href='Contacts.html'">Back to Contacts</button></p>
+
+<div id="stats"></div>
+
+<script>
+const stats = JSON.parse(localStorage.getItem("patientStats"));
+
+if (!stats) {
+  document.getElementById("stats").innerHTML = "<p>No statistics found.</p>";
+} else {
+
+document.getElementById("stats").innerHTML = `
+  <h2>Average BMI by Sex</h2>
+  ${renderAverageBMI(stats.averageBMIBySex)}
+
+  <h2>BMI Category Counts</h2>
+  ${renderBMICategories(stats.bmiCategoryCounts)}
+
+  <h2>Total Patients</h2>
+  <p>${stats.totalPatients ?? 0}</p>
+
+  <h2>Total Female Patients Aged 50+</h2>
+  <p>${stats.totalFemales50Plus ?? 0}</p>
+`;
+}
+
+// Helper to render average BMI by sex as a table
+function renderAverageBMI(obj) {
+  if (!obj || Object.keys(obj).length === 0) return '<p>No data available.</p>';
+  let out = '<table class="stats-table"><thead><tr><th>Sex</th><th>Average BMI</th></tr></thead><tbody>';
+  for (const [sex, avg] of Object.entries(obj)) {
+    out += `<tr><td>${escapeHtml(sex)}</td><td>${escapeHtml(String(avg))}</td></tr>`;
+  }
+  out += '</tbody></table>';
+  return out;
+}
+
+// Helper to render BMI category counts as a list
+function renderBMICategories(obj) {
+  if (!obj || Object.keys(obj).length === 0) return '<p>No data available.</p>';
+  let out = '<ul class="stats-list">';
+  for (const [cat, count] of Object.entries(obj)) {
+    out += `<li>${escapeHtml(cat)}: ${escapeHtml(String(count))}</li>`;
+  }
+  out += '</ul>';
+  return out;
+}
+
+// Minimal HTML-escaping helper
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+</script>
+
+</body>
+</html>
